@@ -1,10 +1,14 @@
 
 
 ** TODO ** :
-    - Combine sample that have several masks into a single image with all masks 
-    represented( exemple : benign (98)_mask.png & benign (98)_mask_1.png )
-    -> How to combine ? With a "+" or a max
+    - Create MASK-RCNN model
+    - Create UNET model
+    - Choose some metrics
+        
 
 ** DONE ** :
     - Download the dataset
     - Function to load the images and the masks
+    - Combine sample that have several masks into a single image with all masks 
+    represented( exemple : benign (98)_mask.png & benign (98)_mask_1.png )
+    -> How to combine ? With a "+" or a max

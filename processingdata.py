@@ -13,6 +13,9 @@ BENIGN_PATH = f"{PATH}/benign"
 
 
 def collect_data(name):
+    """
+    For a classname create the two path list of images and masks
+    """
     all_images = sorted(
         glob(os.path.join(PATH, name + "/*).png")),
         key=lambda x: [int(c) if c.isdigit() else c for c in re.split(r"(\d+)", x)],
@@ -50,6 +53,15 @@ def group_maks(masks):
 
 
 def load_dataset():
+    """
+    Combine the previous function and differents class label and apply train_test_split on it
+
+    Retuns :
+        - X_train() : the matrix of training images
+        - y_train() : the matrix of training masks
+        - X_test() : the matrix of testing images
+        - y_test() : the matrix of testing masks
+    """
     all_benign_images, all_benign_masks = collect_data("benign")
 
     # Here all = tf.constant(all_benign_masks) works
@@ -77,12 +89,15 @@ def load_dataset():
 
 
 def show_some_images(images, masks):
+    """
+    Show a numbers of images and it's associated masks
+    """
 
     random_number = randint(0, len(images) - 6)
     # random_number = 192 # Used to check on malignant
     plt.figure(figsize=(20, 10))
     for i in range(5):
-        plt.subplot(2, 5, +i + 1)
+        plt.subplot(2, 5, i + 1)
         plt.imshow(images[random_number + i + 1], "gray")
         plt.axis("off")
         plt.title("Real Image")
