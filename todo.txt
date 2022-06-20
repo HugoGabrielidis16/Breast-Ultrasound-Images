@@ -1,0 +1,10 @@
+
+
+** TODO ** :
+    - Combine sample that have several masks into a single image with all masks 
+    represented( exemple : benign (98)_mask.png & benign (98)_mask_1.png )
+    -> How to combine ? With a "+" or a max
+
+** DONE ** :
+    - Download the dataset
+    - Function to load the images and the masks
