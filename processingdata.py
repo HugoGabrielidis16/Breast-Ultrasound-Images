@@ -144,9 +144,21 @@ def tf_dataset(x, y, batch_size=32):
     return ds
 
 
+def load():
+    (X_train, y_train), (X_test, y_test) = load_dataset()
+    X_train = X_train[:64]
+    y_train = y_train[:64]
+    X_test = X_test[:64]
+    y_test = y_test[:64]
+    train_ds = tf_dataset(X_train, y_train, batch_size=8)
+    test_ds = tf_dataset(X_test, y_test, batch_size=8)
+    return train_ds, test_ds
+
+
 if __name__ == "__main__":
     (X_train, y_train), (X_test, y_test) = load_dataset()
     train_ds = tf_dataset(X_train, y_train)
     test_ds = tf_dataset(X_test, y_test)
     for x, y in train_ds.take(1):
         show_some_images(x, y)
+        print(x.shape, y.shape)
