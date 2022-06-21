@@ -147,5 +147,6 @@ def tf_dataset(x, y, batch_size=32):
 if __name__ == "__main__":
     (X_train, y_train), (X_test, y_test) = load_dataset()
     train_ds = tf_dataset(X_train, y_train)
+    test_ds = tf_dataset(X_test, y_test)
     for x, y in train_ds.take(1):
         show_some_images(x, y)

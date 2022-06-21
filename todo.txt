@@ -1,8 +1,8 @@
 
 
 ** TODO ** :
-    - Create MASK-RCNN model
-    - Create UNET model
+    - Implement MASK-RCNN model
+    - Implement UNET model
     - Choose some metrics
         
 
