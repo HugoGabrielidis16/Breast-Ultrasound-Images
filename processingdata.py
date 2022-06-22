@@ -77,13 +77,13 @@ def load_dataset():
         all_images,
         test_size=0.2,
         random_state=1,
-        shuffle=True,
+        # shuffle=True,
     )
     y_train, y_test = train_test_split(
         all_masks,
         test_size=0.2,
         random_state=1,
-        shuffle=True,
+        # shuffle=True,
     )
     return (X_train, y_train), (X_test, y_test)
 
@@ -94,7 +94,7 @@ def show_some_images(images, masks):
     """
 
     random_number = randint(0, len(images) - 6)
-    # random_number = 192 # Used to check on malignant
+    # random_number = 4  # Used to check on malignant
     plt.figure(figsize=(20, 10))
     for i in range(5):
         plt.subplot(2, 5, i + 1)
@@ -114,14 +114,22 @@ def process_image(image, HEIGHT=256, WIDTH=256):
     image = cv2.imread(image, cv2.IMREAD_GRAYSCALE)
     image = cv2.resize(image, (HEIGHT, WIDTH))
     image = image / 255.0
+
     image = image.astype(np.float32)
     image = np.expand_dims(image, axis=-1)
     return image
 
 
 def process_mask(mask):
+    """
+    Mask proccessing function
+    """
     mask = mask.astype(np.float32)
-    mask = np.expand_dims(mask, axis=-1)
+    mask = mask / 255
+    # mask = mask > 0.5
+    mask = np.round(mask)
+    # mask = mask > 0.5  # only black or white
+    mask = np.expand_dims(mask, axis=-1)  # need shape to be (256,256,1)
     return mask
 
 
@@ -155,10 +163,16 @@ def load():
     return train_ds, test_ds
 
 
+def show_matrix(x):
+    for i in range(len(x)):
+        print(x[i])
+
+
 if __name__ == "__main__":
     (X_train, y_train), (X_test, y_test) = load_dataset()
-    train_ds = tf_dataset(X_train, y_train)
-    test_ds = tf_dataset(X_test, y_test)
+    train_ds = tf_dataset(X_train, y_train, batch_size=16)
+    test_ds = tf_dataset(X_test, y_test, batch_size=16)
     for x, y in train_ds.take(1):
         show_some_images(x, y)
-        print(x.shape, y.shape)
+        # print(x.shape, y.shape)
+        # show_matrix(x[0])

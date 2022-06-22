@@ -1,0 +1,2 @@
+Since all UNET model I found doesn't do well the issue must be with the dataset, let's review it
+-> the issue was that I didn't divided the mask by 255 so since the activation function is a sigmoid it couldnt predict really well
