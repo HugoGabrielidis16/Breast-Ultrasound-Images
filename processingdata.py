@@ -8,8 +8,8 @@ import matplotlib.pyplot as plt
 from random import randint
 from sklearn.model_selection import train_test_split
 
-PATH = "Dataset_BUSI_with_GT"
-BENIGN_PATH = f"{PATH}/benign"
+PATH = "drive/MyDrive/Breast-Ultrasound-Images/Dataset_BUSI_with_GT"
+# PATH = "Dataset_BUSI_with_GT"
 
 
 def collect_data(name):
@@ -146,12 +146,12 @@ def tf_dataset(x, y, batch_size=32):
 
 def load():
     (X_train, y_train), (X_test, y_test) = load_dataset()
-    X_train = X_train[:64]
+    """ X_train = X_train[:64]
     y_train = y_train[:64]
     X_test = X_test[:64]
-    y_test = y_test[:64]
-    train_ds = tf_dataset(X_train, y_train, batch_size=8)
-    test_ds = tf_dataset(X_test, y_test, batch_size=8)
+    y_test = y_test[:64] """
+    train_ds = tf_dataset(X_train, y_train, batch_size=16)
+    test_ds = tf_dataset(X_test, y_test, batch_size=16)
     return train_ds, test_ds
 
 

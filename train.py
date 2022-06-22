@@ -1,4 +1,3 @@
-from cgi import test
 import tensorflow as tf
 from model.UNET import UNET
 from processingdata import load
