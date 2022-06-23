@@ -1,6 +1,5 @@
 *.zip
 Dataset_BUSI_with_GT
 model/UNETv2.h5
-.gitignore
 __pycache__
 .DS_Store
