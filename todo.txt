@@ -5,6 +5,7 @@
     - Implement MASK-RCNN model
     - Choose some metrics : AUC, Jaccard
     - Inference file on a random sample
+    - Do a noteebook for kaggle
 
         
 
@@ -15,3 +16,4 @@
     represented( exemple : benign (98)_mask.png & benign (98)_mask_1.png )
     -> How to combine ? With a "+" or a max
     - Implement UNET model
+    - Inference on random sample
