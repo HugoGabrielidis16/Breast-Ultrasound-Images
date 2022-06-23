@@ -1,6 +1,8 @@
 import tensorflow as tf
 from model.UNET import UNET
 from processingdata import load
+import matplotlib.pyplot as plt
+from random import randint
 
 
 if __name__ == "__main__":

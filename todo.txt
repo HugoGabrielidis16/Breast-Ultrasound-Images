@@ -1,10 +1,10 @@
 
 
 ** TODO ** :
-    - Find the bug in accuracy, maybe modify the input
-    (3 channels for the images and two for the masks)
+    - Implement more complex UNET model (from 128 to 1024)
     - Implement MASK-RCNN model
     - Choose some metrics : AUC, Jaccard
+    - Inference file on a random sample
 
         
 

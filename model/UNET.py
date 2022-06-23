@@ -74,24 +74,24 @@ def block_conv_up(x, p, dims):
 
 def UNET(input_shape):
     input = tf.keras.layers.Input(shape=input_shape)
-    x1, p1 = block_conv_down(input, 16)
+    x1, p1 = block_conv_down(input, 64)
     # print(f" x1 shape : {x1.shape}")
-    x2, p2 = block_conv_down(p1, 32)
+    x2, p2 = block_conv_down(p1, 128)
     # print(f" x2 shape : {x2.shape}")
-    x3, p3 = block_conv_down(p2, 64)
+    x3, p3 = block_conv_down(p2, 256)
     # print(f" x3 shape : {x3.shape}")
-    x4, p4 = block_conv_down(p3, 128)
+    x4, p4 = block_conv_down(p3, 512)
     # print(f" x4 shape : {x4.shape}")
 
-    p5 = bottleneck(p4, 256)
+    p5 = bottleneck(p4, 1024)
     # print(f" p5 shape : {p5.shape}")
-    p6 = block_conv_up(x4, p5, 128)
+    p6 = block_conv_up(x4, p5, 512)
     # print(f" p6 shape : {p6.shape}")
-    p7 = block_conv_up(x3, p6, 64)
+    p7 = block_conv_up(x3, p6, 256)
     # print(f" p7 shape : {p7.shape}")
-    p8 = block_conv_up(x2, p7, 32)
+    p8 = block_conv_up(x2, p7, 128)
     # print(f" p8 shape : {p8.shape}")
-    p9 = block_conv_up(x1, p8, 16)
+    p9 = block_conv_up(x1, p8, 64)
 
     # print(f" p9 shape : {p9.shape}")
 
