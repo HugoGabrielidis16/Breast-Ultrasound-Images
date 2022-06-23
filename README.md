@@ -2,6 +2,10 @@
 
 # Description
 
+Implementation of UNET architecture on the Breast Ultrasond Dataset from kaggle
+
+![plot](./images/u-net-architecture.png)
+
 # Training
 
 Trained using google colab with a Tesla T4
